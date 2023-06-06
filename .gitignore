@@ -1,0 +1,6 @@
+program
+*.o
+*.out
+*.pdf
+*.odt
+*.vim
