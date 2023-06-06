@@ -1,6 +1,7 @@
 #ifndef BASIS_HPP
 #define BASIS_HPP
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include "../../Date/Date.hpp"
@@ -8,6 +9,7 @@
 using std::istream;
 using std::ostream;
 using std::string;
+using std::setw;
 
 class Basis {
 public:
@@ -23,15 +25,15 @@ public:
     void setDate(Date);
     void setName(string);
 
-    int getNumber();
-    Date getDate();
-    string getName();
-    string toString();
-    string toString(string separator);
+    int getNumber() const;
+    Date getDate() const;
+    string getName() const;
+    string toString() const;
+    string toString(string separator) const;
 
     bool operator==(const Basis &basis);
     bool operator!=(const Basis &basis);
-    ostream &operator<<(ostream &os);
+    friend ostream &operator<<(ostream &os, const Basis& obj);
     friend istream &operator>>(istream &os, Basis&);
 
 private:

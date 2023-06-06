@@ -62,10 +62,10 @@ void selectBasisByBasis(vector<std::any> params) {
     Basis basis;
     cin >> basis;
 
-    vector<Basis> vec = storage->selectBasisByBasis(basis);
-    for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i].toString() << endl;
-    }
+    // vector<Basis> vec = storage->selectBasisByBasis(basis);
+    // for (int i = 0; i < vec.size(); i++) {
+    //     cout << vec[i].toString() << endl;
+    // }
 }
 
 int main() {

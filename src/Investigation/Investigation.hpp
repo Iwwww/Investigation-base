@@ -5,12 +5,14 @@
 #define INVESTIGATION_HPP
 
 #include <exception>
+#include <iomanip>
 #include <string>
 #include "../Date/Date.hpp"
 #include "Basis/Basis.hpp"
 
 using std::cin;
 using std::cout;
+using std::setw;
 using std::out_of_range;
 using std::string;
 

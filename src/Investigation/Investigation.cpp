@@ -80,7 +80,7 @@ Basis Investigation::getBasis() const {
 }
 
 ostream &operator<<(ostream &os, const Investigation &obj) {
-    string sep = " ";
+    string sep = " | ";
     string type{};
 
     switch (obj.type) {
@@ -93,10 +93,9 @@ ostream &operator<<(ostream &os, const Investigation &obj) {
             break;
     }
 
-    os << std::to_string(obj.getNumber()) << string(" ") << obj.getName() <<
-    sep
-       << obj.getDate().toString() << sep << std::to_string(obj.getType())
-       << sep << sep << type << obj.getBasis().toString();
+    os << std::to_string(obj.getNumber()) << sep << std::left << setw(47)
+       << obj.getName() << sep << setw(10) << obj.getDate().toString() << sep
+       << setw(25) << type << sep << setw(8) << obj.getBasis();
     return os;
 }
 
@@ -108,7 +107,7 @@ istream &Investigation::operator>>(istream &os) {
     Type type{};
     Basis basis;
 
-    cout << "Input Investigation";
+    cout << "Input Investigation\n";
     cout << "Number: ";
     os >> number;
     this->setNumber(number);

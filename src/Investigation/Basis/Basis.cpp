@@ -23,27 +23,26 @@ void Basis::setName(string name) {
     this->name = name;
 }
 
-int Basis::getNumber() {
+int Basis::getNumber() const {
     return number;
 }
 
-Date Basis::getDate() {
+Date Basis::getDate() const {
     return date;
 }
 
-string Basis::getName() {
+string Basis::getName() const {
     return name;
 }
 
-string Basis::toString() {
+string Basis::toString() const {
     return toString(separator);
 }
 
-string Basis::toString(string separator) {
-    string date;
-    date +=
-        std::to_string(number) + separator + string(date) + separator + name;
-    return date;
+string Basis::toString(string separator) const {
+    string base;
+    base += std::to_string(number) + separator + name;
+    return base;
 }
 
 bool Basis::operator==(const Basis &basis) {
@@ -55,19 +54,20 @@ bool Basis::operator!=(const Basis &basis) {
     return !(*this == basis);
 }
 
-ostream &Basis::operator<<(ostream &os) {
-    toString();
-    // os << std::to_string(getNumber()) << string(" ") << getDate().toString()
-    // << string(" ") << getName();
+ostream &operator<<(ostream &os, const Basis &obj) {
+    // os << toString("|");
+    string sep = " | ";
+    os << std::left << setw(8) << obj.getNumber() << sep
+       << setw(10) << obj.getDate().toString() << sep << obj.getName();
     return os;
 }
 
-istream &operator>>(istream &os, Basis& basis) {
+istream &operator>>(istream &os, Basis &basis) {
     int number = 0;
     Date date;
     string name;
 
-    cout << "Input Basis";
+    cout << "Input Basis\n";
     cout << "Number: ";
     os >> number;
     basis.setNumber(number);
