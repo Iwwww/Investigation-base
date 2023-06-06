@@ -59,7 +59,7 @@ string Date::toString() {
 string Date::toString(string separator) {
     string date;
     date += std::to_string(year) + separator + std::to_string(month) +
-            separator + std::to_string(month) + separator + std::to_string(day);
+            separator + std::to_string(day);
     return date;
 }
 
@@ -108,12 +108,12 @@ ostream &Date::operator<<(ostream &os) {
     return os;
 }
 
-istream &operator>>(istream &os, Date& date) {
+istream &operator>>(istream &os, Date &date) {
     int year = Date::YEAR_RANGE_BEGIN;
     int month = Date::MONTH_RANGE_BEGIN;
     int day = Date::DAY_RANGE_BEGIN;
 
-    cout << "Input Data";
+    cout << "Input Date\n";
     cout << "Year: ";
     os >> year;
     date.setYear(year);
