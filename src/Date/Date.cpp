@@ -58,8 +58,14 @@ string Date::toString() {
 
 string Date::toString(string separator) {
     string date;
-    date += std::to_string(year) + separator + std::to_string(month) +
-            separator + std::to_string(day);
+    string y = std::to_string(year);
+    string m = std::to_string(month);
+    string d = std::to_string(day);
+
+    if (m.size() < 2) m = "0" + m;
+    if (d.size() < 2) d = "0" + d;
+
+    date += y + separator + m + separator + d;
     return date;
 }
 
