@@ -18,31 +18,31 @@ vector<Investigation> Storage::getAllOrdered() {
 }
 
 vector<Investigation> Storage::sortByNumber() {
-    // Counting Sort
+    // Bubble Sort
     if (storage.size() == 0) {
         return storage;
     }
 
     vector<Investigation> in = storage;
 
-    int min = in[0].getNumber();
-    int max = in[0].getNumber();
+    // srot by name
     for (int i = 0; i < in.size(); i++) {
-        if (in[i].getNumber() < min) min = in[i].getNumber();
-        if (in[i].getNumber() > max) max = in[i].getNumber();
+        for (int j = i; j < in.size(); j++) {
+            if (in[i].getNumber() > in[j].getNumber()) {
+                Investigation tmp = in[i];
+                in[i] = in[j];
+                in[j] = tmp;
+            }
+        }
     }
 
-    vector<int> count = vector<int>(max - min + 1);
-
+    // sort by date if numbers are the same
     for (int i = 0; i < in.size(); i++) {
-        count[in[i].getNumber() - min]++;
-    }
-
-    int index = 0;
-    for (int i = 0; i < count.size(); i++) {
-        if (count[i] != 0) {
-            for (int j = 0; j < count[i]; j++) {
-                in[index++].setNumber(i + 1);
+        for (int j = i; j < in.size(); j++) {
+            if (in[i].getNumber() == in[j].getNumber() && in[i].getDate() < in[j].getDate()) {
+                Investigation tmp = in[i];
+                in[i] = in[j];
+                in[j] = tmp;
             }
         }
     }
@@ -70,19 +70,13 @@ vector<Investigation> Storage::sortByName() {
     }
 
     // sort by date if names are the same
-    Investigation last = in[0];
-    int last_index = 0;
     for (int i = 0; i < in.size(); i++) {
-        if (last.getName() != in[i].getName()) {
-            for (int j = last_index; j - 1 < i; j++) {
-                if (in[i].getDate() > in[j].getDate()) {
-                    Investigation tmp = in[i];
-                    in[i] = in[j];
-                    in[j] = tmp;
-                }
+        for (int j = i; j < in.size(); j++) {
+            if (in[i].getName() == in[j].getName() && in[i].getDate() < in[j].getDate()) {
+                Investigation tmp = in[i];
+                in[i] = in[j];
+                in[j] = tmp;
             }
-            last = in[i];
-            last_index = 0;
         }
     }
 
@@ -90,35 +84,31 @@ vector<Investigation> Storage::sortByName() {
 }
 
 vector<Investigation> Storage::sortByBasisNumber() {
-    // Counting Sort
+    // Bubble Sort
     if (storage.size() == 0) {
         return storage;
     }
 
     vector<Investigation> in = storage;
 
-    int min = in[0].getBasis().getNumber();
-    int max = in[0].getBasis().getNumber();
+    // srot by name
     for (int i = 0; i < in.size(); i++) {
-        if (in[i].getBasis().getNumber() < min)
-            min = in[i].getBasis().getNumber();
-        if (in[i].getBasis().getNumber() > max)
-            max = in[i].getBasis().getNumber();
+        for (int j = i; j < in.size(); j++) {
+            if (in[i].getBasis().getNumber() > in[j].getBasis().getNumber()) {
+                Investigation tmp = in[i];
+                in[i] = in[j];
+                in[j] = tmp;
+            }
+        }
     }
 
-    vector<int> count = vector<int>(max - min + 1);
-
+    // sort by date if numbers are the same
     for (int i = 0; i < in.size(); i++) {
-        count[in[i].getBasis().getNumber() - min]++;
-    }
-
-    int index = 0;
-    for (int i = 0; i < count.size(); i++) {
-        if (count[i] != 0) {
-            for (int j = 0; j < count[i]; j++) {
-                Basis tmp = in[index].getBasis();
-                tmp.setNumber(i + 1);
-                in[index++].setBasis(tmp);
+        for (int j = i; j < in.size(); j++) {
+            if (in[i].getBasis().getNumber() == in[j].getBasis().getNumber() && in[i].getBasis().getDate() < in[j].getBasis().getDate()) {
+                Investigation tmp = in[i];
+                in[i] = in[j];
+                in[j] = tmp;
             }
         }
     }
