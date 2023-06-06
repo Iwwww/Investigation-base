@@ -25,6 +25,13 @@ organizations = [
     "McGill University"
 ]
 
+basis_desc = [
+        "Policy",
+        "Privacy",
+        "Control",
+        "Security",
+        ]
+
 investigation_types = [
     "Investigation::Type::FinancialControl",
     "Investigation::Type::StateProcurementControl",
@@ -39,7 +46,7 @@ for _ in range(20):
     investigation_type = random.choice(investigation_types)
     basis_id = random.randint(10000000, 99999999)
     basis_date = f"Date(2023, {random.randint(1, 12)}, {random.randint(1, 28)})"
-    basis_description = f"Check {organization}"
+    basis_description = f"{random.choice(basis_desc)}"
 
     row = f"storage.add(Investigation(\n" \
           f"    {investigation_id},\n" \
