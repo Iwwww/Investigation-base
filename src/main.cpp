@@ -73,179 +73,164 @@ int main() {
     // init data
     Storage storage;
     storage.add(Investigation(
-        93670579,
-        "University College London (UCL)",
-        Date(2023, 7, 25),
+        90471739,
+        "Massachusetts Institute of Technology (MIT)",
+        Date(2023, 8, 2),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(38533011, Date(2023, 2, 2), "Policy")));
+
+    storage.add(Investigation(
+        93294455,
+        "McGill University",
+        Date(2023, 6, 16),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(89188912, Date(2023, 5, 24), "Policy")));
+
+    storage.add(Investigation(
+        72101764,
+        "KGU",
+        Date(2023, 9, 2),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(64576011, Date(2023, 8, 10), "Security")));
+
+    storage.add(Investigation(
+        22323772,
+        "University of Chicago",
+        Date(2023, 6, 23),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(
-            64966214,
-            Date(2023, 10, 4),
-            "Check University College London (UCL)")));
+        Basis(92097260, Date(2023, 9, 18), "Control")));
 
     storage.add(Investigation(
-        43450165,
-        "BMSTU",
-        Date(2023, 2, 1),
+        93294455,
+        "KF BMSTU",
+        Date(2023, 6, 27),
         "This is description",
         Investigation::Type::FinancialControl,
-        Basis(81435834, Date(2023, 4, 17), "Check BMSTU")));
+        Basis(96766401, Date(2023, 11, 25), "Privacy")));
 
     storage.add(Investigation(
-        38239336,
+        53318612,
+        "KGU",
+        Date(2023, 8, 18),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(23177011, Date(2023, 12, 20), "Control")));
+
+    storage.add(Investigation(
+        15150285,
+        "KGU",
+        Date(2023, 10, 19),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(61075414, Date(2023, 11, 13), "Security")));
+
+    storage.add(Investigation(
+        83461541,
+        "University of Pennsylvania",
+        Date(2023, 10, 21),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(45836708, Date(2023, 11, 24), "Privacy")));
+
+    storage.add(Investigation(
+        93294455,
+        "Stanford University",
+        Date(2023, 6, 11),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(24986944, Date(2023, 6, 2), "Control")));
+
+    storage.add(Investigation(
+        81091156,
         "Cambridge University",
-        Date(2023, 6, 5),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(88412335, Date(2023, 7, 4), "Check Cambridge University")));
-
-    storage.add(Investigation(
-        30565240,
-        "California Institute of Technology (Caltech)",
-        Date(2023, 9, 18),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(
-            89199115,
-            Date(2023, 2, 22),
-            "Check California Institute of Technology (Caltech)")));
-
-    storage.add(Investigation(
-        91299740,
-        "BMSTU",
-        Date(2023, 11, 6),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(24872565, Date(2023, 1, 22), "Check BMSTU")));
-
-    storage.add(Investigation(
-        35208763,
-        "California Institute of Technology (Caltech)",
-        Date(2023, 1, 11),
+        Date(2023, 8, 1),
         "This is description",
         Investigation::Type::FinancialControl,
-        Basis(
-            97466769,
-            Date(2023, 4, 21),
-            "Check California Institute of Technology (Caltech)")));
+        Basis(77268071, Date(2023, 8, 25), "Privacy")));
 
     storage.add(Investigation(
-        26746415,
-        "University College London (UCL)",
-        Date(2023, 12, 26),
+        39177051,
+        "University of California, Los Angeles (UCLA)",
+        Date(2023, 8, 28),
         "This is description",
         Investigation::Type::FinancialControl,
-        Basis(
-            53181948,
-            Date(2023, 8, 18),
-            "Check University College London (UCL)")));
+        Basis(75083165, Date(2023, 11, 15), "Policy")));
 
     storage.add(Investigation(
-        19039307,
-        "University of Chicago",
-        Date(2023, 8, 13),
+        42084163,
+        "Massachusetts Institute of Technology (MIT)",
+        Date(2023, 5, 5),
         "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(51848283, Date(2023, 6, 9), "Check University of Chicago")));
+        Investigation::Type::StateServicesControl,
+        Basis(84970609, Date(2023, 6, 7), "Policy")));
 
     storage.add(Investigation(
-        87609109,
-        "BMSTU",
+        93085608,
+        "University of California, Berkeley",
         Date(2023, 3, 27),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(84089119, Date(2023, 2, 22), "Check BMSTU")));
+        Basis(72356570, Date(2023, 5, 15), "Security")));
 
     storage.add(Investigation(
-        89913126,
-        "KF BMSTU",
-        Date(2023, 12, 11),
+        48803867,
+        "Stanford University",
+        Date(2023, 2, 24),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(99932116, Date(2023, 8, 28), "Check KF BMSTU")));
+        Basis(38393191, Date(2023, 2, 19), "Policy")));
 
     storage.add(Investigation(
-        65485607,
-        "University of California, Los Angeles (UCLA)",
-        Date(2023, 5, 23),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(
-            78946923,
-            Date(2023, 9, 23),
-            "Check University of California, Los Angeles (UCLA)")));
-
-    storage.add(Investigation(
-        79429946,
-        "University of Toronto",
-        Date(2023, 8, 6),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(42518498, Date(2023, 4, 24), "Check University of Toronto")));
-
-    storage.add(Investigation(
-        33359894,
-        "KGU",
-        Date(2023, 9, 5),
+        78575237,
+        "Harvard University",
+        Date(2023, 3, 9),
         "This is description",
         Investigation::Type::FinancialControl,
-        Basis(81521495, Date(2023, 4, 14), "Check KGU")));
+        Basis(89461135, Date(2023, 7, 10), "Security")));
 
     storage.add(Investigation(
-        50409440,
-        "Harvard University",
-        Date(2023, 7, 11),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(81931996, Date(2023, 1, 2), "Check Harvard University")));
-
-    storage.add(Investigation(
-        34719344,
-        "KF BMSTU",
-        Date(2023, 11, 16),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(10080090, Date(2023, 7, 3), "Check KF BMSTU")));
-
-    storage.add(Investigation(
-        60187258,
-        "University of Chicago",
-        Date(2023, 4, 16),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(62642177, Date(2023, 12, 21), "Check University of Chicago")));
-
-    storage.add(Investigation(
-        96517676,
-        "University of Tokyo",
-        Date(2023, 6, 4),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(44061684, Date(2023, 5, 11), "Check University of Tokyo")));
-
-    storage.add(Investigation(
-        67197693,
-        "University of Toronto",
-        Date(2023, 10, 20),
-        "This is description",
-        Investigation::Type::StateProcurementControl,
-        Basis(51030876, Date(2023, 6, 5), "Check University of Toronto")));
-
-    storage.add(Investigation(
-        50564668,
+        47017009,
         "Oxford University",
-        Date(2023, 5, 6),
+        Date(2023, 2, 12),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(23571457, Date(2023, 2, 5), "Check Oxford University")));
+        Basis(80223081, Date(2023, 8, 6), "Policy")));
 
     storage.add(Investigation(
-        11041444,
-        "Imperial College London",
-        Date(2023, 7, 14),
+        18332384,
+        "University of Pennsylvania",
+        Date(2023, 10, 22),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(82730713, Date(2023, 6, 5), "Check Imperial College London")));
+        Basis(57512718, Date(2023, 1, 22), "Privacy")));
+
+    storage.add(Investigation(
+        37905361,
+        "University of Toronto",
+        Date(2023, 4, 17),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(98495321, Date(2023, 10, 22), "Privacy")));
+
+    storage.add(Investigation(
+        96303533,
+        "Princeton University",
+        Date(2023, 8, 26),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(80646842, Date(2023, 4, 9), "Policy")));
+
+    storage.add(Investigation(
+        26503748,
+        "Imperial College London",
+        Date(2023, 9, 25),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(68146960, Date(2023, 10, 6), "Control")));
 
     vector<std::any> params{&storage};
 
