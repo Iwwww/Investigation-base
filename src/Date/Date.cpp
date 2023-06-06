@@ -87,7 +87,13 @@ bool Date::operator!=(const Date &date) {
 
 bool Date::operator>(const Date &date) {
     if (this->year > date.year) {
+        return true;
+
+    } else if (this->year == date.year) {
         if (this->month > date.month) {
+            return true;
+
+        } else if (this->month == date.month) {
             if (this->day > date.day) {
                 return true;
             }
@@ -99,7 +105,13 @@ bool Date::operator>(const Date &date) {
 
 bool Date::operator<(const Date &date) {
     if (this->year < date.year) {
+        return true;
+
+    } else if (this->year == date.year) {
         if (this->month < date.month) {
+            return true;
+
+        } else if (this->month == date.month) {
             if (this->day < date.day) {
                 return true;
             }
