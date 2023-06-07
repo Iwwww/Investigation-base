@@ -72,7 +72,6 @@ istream &operator>>(istream &os, Basis &basis) {
     os >> number;
     basis.setNumber(number);
 
-    cout << "Date: ";
     os >> date;
     basis.setDate(date);
 

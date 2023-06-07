@@ -1,4 +1,5 @@
 #include "Storage.hpp"
+#include <string>
 #include <vector>
 
 Storage::Storage() {}
@@ -127,22 +128,22 @@ vector<Investigation> Storage::selectInvestigationByBasis(Basis basis) {
     return result;
 }
 
-vector<Basis> Storage::selectBasisByBasis(Basis basis) {
-    vector<Basis> result{};
+vector<Investigation> Storage::selectBasisByBasis(Basis basis) {
+    vector<Investigation> result{};
     for (int i = 0; i < storage.size(); i++) {
         if (storage[i].getBasis() == basis) {
-            result.push_back(storage[i].getBasis());
+            result.push_back(storage[i]);
         }
     }
 
     return result;
 }
 
-vector<Date> Storage::selectDateByBasis(Basis basis) {
-    vector<Date> result{};
+vector<Investigation> Storage::selectDateByBasis(Basis basis) {
+    vector<Investigation> result{};
     for (int i = 0; i < storage.size(); i++) {
         if (storage[i].getBasis() == basis) {
-            result.push_back(storage[i].getBasis().getDate());
+            result.push_back(storage[i]);
         }
     }
 

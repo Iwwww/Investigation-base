@@ -10,6 +10,7 @@ STORAGE_DIR = Storage
 
 # Source files
 MAIN_SRC = $(SRC_DIR)/main.cpp
+# MAIN_SRC = $(SRC_DIR)/test.cpp
 DATE_SRC = $(DATE_DIR)/Date.cpp
 INVESTIGATION_SRC = $(INVESTIGATION_DIR)/Investigation.cpp
 BASIS_SRC = $(INVESTIGATION_DIR)/Basis/Basis.cpp

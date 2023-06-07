@@ -34,8 +34,8 @@ public:
 
     // return all with found basis
     vector<Investigation> selectInvestigationByBasis(Basis);
-    vector<Basis> selectBasisByBasis(Basis);
-    vector<Date> selectDateByBasis(Basis);
+    vector<Investigation> selectBasisByBasis(Basis);
+    vector<Investigation> selectDateByBasis(Basis);
     vector<Investigation> selectNameByName(string name);
 
     int size();

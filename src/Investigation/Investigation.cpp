@@ -3,7 +3,7 @@
 Investigation::Investigation() {}
 
 Investigation::Investigation(
-    int number, 
+    int number,
     string name,
     Date date,
     string description,
