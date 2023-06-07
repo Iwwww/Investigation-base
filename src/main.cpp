@@ -1,5 +1,9 @@
+#include <stdio.h>
+#include <string.h>
 #include <any>
+#include <string>
 #include <vector>
+#include "Input/Input.hpp"
 #include "Investigation/Basis/Basis.hpp"
 #include "Investigation/Investigation.hpp"
 #include "Menu/Menu.hpp"
@@ -9,8 +13,15 @@ using std::any;
 using std::any_cast;
 using std::cout;
 using std::endl;
+using std::getline;
 using std::vector;
 using Type = Investigation::Type;
+
+string getString() {
+    string input;
+    getline(cin, input);
+    return input;
+}
 
 void printAddedOrder(vector<std::any> params) {
     auto* storage = any_cast<Storage*>(params[0]);
@@ -60,12 +71,55 @@ void selectBasisByBasis(vector<std::any> params) {
     auto* storage = any_cast<Storage*>(params[0]);
 
     Basis basis;
-    cin >> basis;
+    try {
+        cin >> basis;
+    } catch (const std::invalid_argument&) {
+        cout << "Invalid argument\n";
+        return;
+    }
 
-    // vector<Basis> vec = storage->selectBasisByBasis(basis);
-    // for (int i = 0; i < vec.size(); i++) {
-    //     cout << vec[i].toString() << endl;
-    // }
+    vector<Investigation> vec = storage->selectBasisByBasis(basis);
+    cout << "\n";
+    cout << "Search results:\n";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i].getName() << " " << vec[i].getBasis().toString() << endl;
+    }
+}
+
+void selectDateByBasis(vector<std::any> params) {
+    auto* storage = any_cast<Storage*>(params[0]);
+
+    Basis basis;
+    try {
+        cin >> basis;
+    } catch (const std::invalid_argument&) {
+        cout << "Invalid argument\n";
+        return;
+    }
+
+    vector<Investigation> vec = storage->selectDateByBasis(basis);
+    cout << "\n";
+    cout << "Search results:\n";
+    for (int i = 0; i < vec.size(); i++) {
+        Date date = vec[i].getBasis().getDate();
+        cout << std::left << setw(47) << vec[i].getName() << " "
+             << date.getYear() << "-" << date.getMonth() << endl;
+    }
+}
+
+void selectNameByName(vector<std::any> params) {
+    auto* storage = any_cast<Storage*>(params[0]);
+
+    cout << "Investigation place: ";
+    string name;
+    cin >> name;
+
+    vector<Investigation> vec = storage->selectNameByName(name);
+    cout << "\n";
+    cout << "Search results:\n";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << endl;
+    }
 }
 
 int main() {
@@ -73,164 +127,164 @@ int main() {
     // init data
     Storage storage;
     storage.add(Investigation(
-        90471739,
-        "Massachusetts Institute of Technology (MIT)",
-        Date(2023, 8, 2),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(38533011, Date(2023, 2, 2), "Policy")));
-
-    storage.add(Investigation(
-        93294455,
-        "McGill University",
-        Date(2023, 6, 16),
+        35219244,
+        "StanfordUniversity",
+        Date(2023, 7, 9),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(89188912, Date(2023, 5, 24), "Policy")));
+        Basis(55033570, Date(2023, 6, 1), "Security")));
 
     storage.add(Investigation(
-        72101764,
+        20553574,
+        "McGillUniversity",
+        Date(2023, 6, 8),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(45435922, Date(2023, 5, 5), "Control")));
+
+    storage.add(Investigation(
+        46915500,
         "KGU",
-        Date(2023, 9, 2),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(64576011, Date(2023, 8, 10), "Security")));
-
-    storage.add(Investigation(
-        22323772,
-        "University of Chicago",
-        Date(2023, 6, 23),
+        Date(2023, 10, 8),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(92097260, Date(2023, 9, 18), "Control")));
+        Basis(55033570, Date(2023, 7, 1), "Security")));
 
     storage.add(Investigation(
-        93294455,
-        "KF BMSTU",
-        Date(2023, 6, 27),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(96766401, Date(2023, 11, 25), "Privacy")));
-
-    storage.add(Investigation(
-        53318612,
-        "KGU",
-        Date(2023, 8, 18),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(23177011, Date(2023, 12, 20), "Control")));
-
-    storage.add(Investigation(
-        15150285,
-        "KGU",
-        Date(2023, 10, 19),
+        88465734,
+        "McGillUniversity",
+        Date(2023, 8, 10),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(61075414, Date(2023, 11, 13), "Security")));
+        Basis(18175691, Date(2023, 11, 7), "Privacy")));
 
     storage.add(Investigation(
-        83461541,
-        "University of Pennsylvania",
-        Date(2023, 10, 21),
+        37436516,
+        "MassachusettsInstituteOfTechnology",
+        Date(2023, 12, 16),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(45836708, Date(2023, 11, 24), "Privacy")));
+        Basis(50425947, Date(2023, 8, 24), "Control")));
 
     storage.add(Investigation(
-        93294455,
-        "Stanford University",
-        Date(2023, 6, 11),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(24986944, Date(2023, 6, 2), "Control")));
-
-    storage.add(Investigation(
-        81091156,
-        "Cambridge University",
-        Date(2023, 8, 1),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(77268071, Date(2023, 8, 25), "Privacy")));
-
-    storage.add(Investigation(
-        39177051,
-        "University of California, Los Angeles (UCLA)",
-        Date(2023, 8, 28),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(75083165, Date(2023, 11, 15), "Policy")));
-
-    storage.add(Investigation(
-        42084163,
-        "Massachusetts Institute of Technology (MIT)",
-        Date(2023, 5, 5),
+        86716173,
+        "PrincetonUniversity",
+        Date(2023, 4, 14),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(84970609, Date(2023, 6, 7), "Policy")));
+        Basis(33360461, Date(2023, 12, 16), "Policy")));
 
     storage.add(Investigation(
-        93085608,
-        "University of California, Berkeley",
-        Date(2023, 3, 27),
+        60055320,
+        "UniversityOfToronto",
+        Date(2023, 6, 24),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(72356570, Date(2023, 5, 15), "Security")));
+        Basis(98384299, Date(2023, 6, 17), "Privacy")));
 
     storage.add(Investigation(
-        48803867,
-        "Stanford University",
-        Date(2023, 2, 24),
-        "This is description",
-        Investigation::Type::StateServicesControl,
-        Basis(38393191, Date(2023, 2, 19), "Policy")));
-
-    storage.add(Investigation(
-        78575237,
-        "Harvard University",
-        Date(2023, 3, 9),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(89461135, Date(2023, 7, 10), "Security")));
-
-    storage.add(Investigation(
-        47017009,
-        "Oxford University",
-        Date(2023, 2, 12),
+        43399174,
+        "CaliforniaInstituteOfTechnology",
+        Date(2023, 2, 9),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(80223081, Date(2023, 8, 6), "Policy")));
+        Basis(57020234, Date(2023, 6, 4), "Control")));
 
     storage.add(Investigation(
-        18332384,
-        "University of Pennsylvania",
-        Date(2023, 10, 22),
+        92714882,
+        "UniversityOfPennsylvania",
+        Date(2023, 3, 4),
         "This is description",
         Investigation::Type::StateProcurementControl,
-        Basis(57512718, Date(2023, 1, 22), "Privacy")));
+        Basis(71585481, Date(2023, 2, 28), "Security")));
 
     storage.add(Investigation(
-        37905361,
-        "University of Toronto",
-        Date(2023, 4, 17),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(98495321, Date(2023, 10, 22), "Privacy")));
-
-    storage.add(Investigation(
-        96303533,
-        "Princeton University",
-        Date(2023, 8, 26),
-        "This is description",
-        Investigation::Type::FinancialControl,
-        Basis(80646842, Date(2023, 4, 9), "Policy")));
-
-    storage.add(Investigation(
-        26503748,
-        "Imperial College London",
-        Date(2023, 9, 25),
+        16847719,
+        "StanfordUniversity",
+        Date(2023, 2, 5),
         "This is description",
         Investigation::Type::StateServicesControl,
-        Basis(68146960, Date(2023, 10, 6), "Control")));
+        Basis(21316053, Date(2023, 1, 21), "Privacy")));
+
+    storage.add(Investigation(
+        43961763,
+        "UniversityOfPennsylvania",
+        Date(2023, 9, 3),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(65019618, Date(2023, 12, 13), "Privacy")));
+
+    storage.add(Investigation(
+        31218189,
+        "BMSTU",
+        Date(2023, 6, 9),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(41241436, Date(2023, 5, 22), "Security")));
+
+    storage.add(Investigation(
+        21387939,
+        "UniversityOfTokyo",
+        Date(2023, 1, 18),
+        "This is description",
+        Investigation::Type::StateProcurementControl,
+        Basis(54736769, Date(2023, 9, 2), "Control")));
+
+    storage.add(Investigation(
+        31218189,
+        "BMSTU",
+        Date(2023, 11, 19),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(79482768, Date(2023, 7, 1), "Security")));
+
+    storage.add(Investigation(
+        18836347,
+        "UniversityOfPennsylvania",
+        Date(2023, 11, 21),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(28210158, Date(2023, 8, 23), "Policy")));
+
+    storage.add(Investigation(
+        73912258,
+        "KFBMSTU",
+        Date(2023, 11, 13),
+        "This is description",
+        Investigation::Type::StateProcurementControl,
+        Basis(10462014, Date(2023, 8, 3), "Control")));
+
+    storage.add(Investigation(
+        31218189,
+        "UniversityOfTokyo",
+        Date(2023, 5, 19),
+        "This is description",
+        Investigation::Type::FinancialControl,
+        Basis(35703293, Date(2023, 10, 12), "Control")));
+
+    storage.add(Investigation(
+        81785491,
+        "KFBMSTU",
+        Date(2023, 6, 22),
+        "This is description",
+        Investigation::Type::StateProcurementControl,
+        Basis(85415490, Date(2023, 11, 9), "Security")));
+
+    storage.add(Investigation(
+        99150134,
+        "ImperialCollegeLondon",
+        Date(2023, 7, 17),
+        "This is description",
+        Investigation::Type::StateProcurementControl,
+        Basis(86372529, Date(2023, 6, 17), "Control")));
+
+    storage.add(Investigation(
+        75585227,
+        "ImperialCollegeLondon",
+        Date(2023, 2, 6),
+        "This is description",
+        Investigation::Type::StateServicesControl,
+        Basis(41427911, Date(2023, 7, 23), "Policy")));
 
     vector<std::any> params{&storage};
 
@@ -254,14 +308,12 @@ int main() {
                     Menu("Sort in basis number order", sortByBasisNumber),
                 }),
             Menu(
-                "Search",
+                "Search Investigation by",
                 vector<Menu>{
                     Menu("Basis (key - Basis)", selectBasisByBasis),
-                    // Menu("Year and Month (key - Basis)", func2),
-                    // Menu(
-                    //     "Investigation name (key - investigation name)",
-                        // func2)
-                        }),
+                    Menu("Date (key - Basis)", selectDateByBasis),
+                    Menu("Place (key - name)", selectNameByName),
+                }),
         },
         params);
 
